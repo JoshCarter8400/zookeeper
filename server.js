@@ -117,12 +117,20 @@ app.post("/api/animals", (req, res) => {
     res.status(400).send("The animal is not properly formatted");
   } else {
     const animal = createNewAnimal(req.body, animals);
-    res.json(animal);
+    res.status(200).json(animal);
   }
 });
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
+app.get("/animals", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/animals.html"));
+});
+
+app.get("/zookeepers", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/zookeepers.html"));
 });
 
 app.listen(PORT, () => {
